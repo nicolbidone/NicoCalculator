@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="weight_v_parent">1</integer>
+    <integer name="weight_v_pos_1">5</integer>
+    <integer name="weight_v_pos_1_1">9</integer>
+    <integer name="weight_v_pos_1_2">1</integer>
+    <integer name="weight_v_pos_2">5</integer>
+</resources>
