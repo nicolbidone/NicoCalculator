@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        text_results.text = "Result"
-        text_operations.text = "Operations"
+        text_results.text = setInitValueResults
+        text_operations.text = setInitValueOperations
 
         button_0.setOnClickListener {
             text_results.text = setValuePressed
