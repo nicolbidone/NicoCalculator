@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="column_3">3</integer>
+    <integer name="column_2">2</integer>
+    <integer name="column_1">1</integer>
+    <integer name="column_0">0</integer>
+    <integer name="row_4">0</integer>
+    <integer name="row_3">1</integer>
+    <integer name="row_2">2</integer>
+    <integer name="row_1">3</integer>
+    <integer name="row_0">4</integer>
+</resources>

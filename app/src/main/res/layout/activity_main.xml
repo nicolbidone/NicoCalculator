@@ -1,19 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:id="@+id/layout_linear_base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="@integer/weight_v_pos_0">
+
+        <LinearLayout
+            android:id="@+id/layout_linear_results_operations"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_results_size"
+            android:layout_gravity="center"
+            android:layout_weight="@integer/weight_v_pos_1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_small_margin"
+                android:layout_marginTop="@dimen/dimen_small_margin"
+                android:layout_weight="@integer/weight_v_pos_1_1" />
+
+            <TextView
+                android:id="@+id/text_operations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_small_margin"
+                android:layout_weight="@integer/weight_v_pos_1_2" />
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/layout_grid_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="@integer/weight_v_pos_2"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/button_close_par"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_4"
+                android:layout_column="@integer/column_1"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_open_par" />
+
+            <Button
+                android:id="@+id/button_open_par"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_4"
+                android:layout_column="@integer/column_0"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_close_par" />
+
+            <Button
+                android:id="@+id/button_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_4"
+                android:layout_column="@integer/column_2"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_delete" />
+
+            <Button
+                android:id="@+id/button_erase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_4"
+                android:layout_column="@integer/column_3"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_erase" />
+
+            <Button
+                android:id="@+id/button_equal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_0"
+                android:layout_column="@integer/column_2"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_equal" />
+
+            <Button
+                android:id="@+id/button_dot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_0"
+                android:layout_column="@integer/column_0"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_dot" />
+
+            <Button
+                android:id="@+id/button_div"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_3"
+                android:layout_column="@integer/column_3"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_div" />
+
+            <Button
+                android:id="@+id/button_mult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_2"
+                android:layout_column="@integer/column_3"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_mult" />
+
+            <Button
+                android:id="@+id/button_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_1"
+                android:layout_column="@integer/column_3"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_minus" />
+
+            <Button
+                android:id="@+id/button_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_0"
+                android:layout_column="@integer/column_3"
+                android:backgroundTint="@color/simpleOperations"
+                android:text="@string/button_plus" />
+
+            <Button
+                android:id="@+id/button_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_3"
+                android:layout_column="@integer/column_2"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_9" />
+
+            <Button
+                android:id="@+id/button_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_3"
+                android:layout_column="@integer/column_1"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_8" />
+
+            <Button
+                android:id="@+id/button_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_3"
+                android:layout_column="@integer/column_0"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_7" />
+
+            <Button
+                android:id="@+id/button_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_2"
+                android:layout_column="@integer/column_0"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_4" />
+
+            <Button
+                android:id="@+id/button_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_2"
+                android:layout_column="@integer/column_1"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_5" />
+
+            <Button
+                android:id="@+id/button_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_2"
+                android:layout_column="@integer/column_2"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_6" />
+
+            <Button
+                android:id="@+id/button_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_1"
+                android:layout_column="@integer/column_0"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_1" />
+
+            <Button
+                android:id="@+id/button_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_1"
+                android:layout_column="@integer/column_1"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_2" />
+
+            <Button
+                android:id="@+id/button_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_1"
+                android:layout_column="@integer/column_2"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_3" />
+
+            <Button
+                android:id="@+id/button_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="@integer/row_0"
+                android:layout_column="@integer/column_1"
+                android:backgroundTint="@color/numbers"
+                android:text="@string/button_0" />
+
+        </GridLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
