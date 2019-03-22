@@ -2,11 +2,10 @@ package com.example.nicocalculator.mvp.presenter
 
 import android.widget.Button
 import com.example.nicocalculator.Key
-import com.example.nicocalculator.MainActivity
 import com.example.nicocalculator.mvp.model.CalculatorModel
-import com.example.nicocalculator.mvp.view.KeyView
+import com.example.nicocalculator.mvp.view.CalculatorView
 
-class Presenter(private val model: CalculatorModel, private val view: KeyView) {
+class CalculatorPresenter(private val model: CalculatorModel, private val view: CalculatorView) {
 
     companion object {
         private const val VALUE_EMPTY_TEXT = ""
@@ -14,6 +13,10 @@ class Presenter(private val model: CalculatorModel, private val view: KeyView) {
         private const val DECIMAL_SEPARATOR = '.'
         private const val VALUE_MIN_CAR = 48
         private const val VALUE_MAX_CHAR = 57
+        private const val ADD_OPERATOR = "+"
+        private const val SUBTRACT_OPERATOR = "-"
+        private const val MULTIPLY_OPERATOR = "*"
+        private const val DIVIDE_OPERATOR = "/"
     }
 
     fun onDeleteButtonPressed() {
@@ -32,7 +35,7 @@ class Presenter(private val model: CalculatorModel, private val view: KeyView) {
 
     fun onKeyButtonPressed(button: Button) {
         var textOperations = model.getTextOperations()
-        if (textOperations == MainActivity.OPERATIONS_DEFAULT_TEXT) {
+        if (textOperations == CalculatorModel.OPERATIONS_DEFAULT_TEXT) {
             textOperations = VALUE_EMPTY_TEXT
         }
         textOperations += button.text
@@ -56,10 +59,10 @@ class Presenter(private val model: CalculatorModel, private val view: KeyView) {
             else {
                 var aux = VALUE_ZERO
                 when (valeant[1].getValue()) {
-                    "+" -> aux = valeant[0].getInt() + vale.getInt()
-                    "/" -> aux = valeant[0].getInt() / vale.getInt()
-                    "*" -> aux = valeant[0].getInt() * vale.getInt()
-                    "-" -> aux = valeant[0].getInt() - vale.getInt()
+                    ADD_OPERATOR -> aux = valeant[0].getInt() + vale.getInt()
+                    DIVIDE_OPERATOR -> aux = valeant[0].getInt() / vale.getInt()
+                    MULTIPLY_OPERATOR -> aux = valeant[0].getInt() * vale.getInt()
+                    SUBTRACT_OPERATOR -> aux = valeant[0].getInt() - vale.getInt()
                 }
                 textResults += " = $aux\n$aux "
                 valeant = mutableListOf()
@@ -85,33 +88,3 @@ class Presenter(private val model: CalculatorModel, private val view: KeyView) {
         return res
     }
 }
-
-/*fun unregister() {
-    val activity = view.activity
-    RxBus.clear(activity)
-}
-
-fun register() {
-    val activity = view.activity
-    RxBus.subscribe(activity, object : DeleteButtonObserver() {
-        override fun onEvent(value: DeleteButtonObserver.DeleteButtonPressed) {
-            onDeleteButtonPressed()
-        }
-    })
-    RxBus.subscribe(activity, object : KeyButtonObserver() {
-        override fun onEvent(value: KeyButtonObserver.KeyButtonPressed) {
-            onKeyButtonPressed()
-        }
-    })
-    RxBus.subscribe(activity, object : EqualButtonObserver() {
-        override fun onEvent(value: EqualButtonObserver.EqualButtonPressed) {
-            onEqualButtonPressed()
-        }
-    })
-    RxBus.subscribe(activity, object : EraseButtonObserver() {
-        override fun onEvent(value: EraseButtonObserver.EraseButtonPressed) {
-            onEraseButtonPressed()
-        }
-    })
-    RxBus.clear(activity)
-}*/
