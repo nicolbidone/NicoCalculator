@@ -4,25 +4,19 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import com.example.nicocalculator.mvp.model.CalculatorModel
-import com.example.nicocalculator.mvp.presenter.Presenter
-import com.example.nicocalculator.mvp.view.KeyView
+import com.example.nicocalculator.mvp.presenter.CalculatorPresenter
+import com.example.nicocalculator.mvp.view.CalculatorView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
-    companion object {
-        const val OPERATIONS_DEFAULT_TEXT = "Operations"
-        const val RESULTS_DEFAULT_TEXT = "Results"
-    }
-
-    lateinit var presenter: Presenter
+    lateinit var presenter: CalculatorPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter = Presenter(CalculatorModel(RESULTS_DEFAULT_TEXT, OPERATIONS_DEFAULT_TEXT), KeyView(this))
+        presenter = CalculatorPresenter(CalculatorModel(), CalculatorView(this))
 
         button_delete.setOnClickListener {
             presenter.onDeleteButtonPressed()
@@ -49,15 +43,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-/*
-override fun onResume() {
-    super.onResume()
-    //presenter?.register()
-}
-
-override fun onPause() {
-    super.onPause()
-    //presenter?.unregister()
-}
-*/

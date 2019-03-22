@@ -3,7 +3,7 @@ package com.example.nicocalculator.mvp.view
 import android.app.Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class KeyView(private val activity: Activity) {
+class CalculatorView(private val activity: Activity) {
 
     fun setTextResult(string: String) {
         activity.text_results.text = string
