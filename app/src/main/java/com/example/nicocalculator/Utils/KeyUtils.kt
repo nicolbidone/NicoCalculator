@@ -1,6 +1,6 @@
-package com.example.nicocalculator.mvp.presenter
+package com.example.nicocalculator.Utils
 
-data class Key(private var operation: String) {
+data class KeyUtils(private var operation: String) {
 
     companion object {
         private const val LEVEL_ZERO = 0

@@ -1,14 +1,12 @@
 package com.example.nicocalculator.mvp.presenter
 
 import android.widget.Button
+import com.example.nicocalculator.Utils.OPERATIONS_DEFAULT_TEXT
+import com.example.nicocalculator.Utils.VALUE_EMPTY_TEXT
 import com.example.nicocalculator.mvp.model.CalculatorModel
 import com.example.nicocalculator.mvp.view.CalculatorView
 
 class CalculatorPresenter(private val model: CalculatorModel, private val view: CalculatorView) {
-
-    companion object {
-        private const val VALUE_EMPTY_TEXT = ""
-    }
 
     fun onDeleteButtonPressed() {
         var textOperations = model.getTextOperations()
@@ -26,7 +24,7 @@ class CalculatorPresenter(private val model: CalculatorModel, private val view: 
 
     fun onKeyButtonPressed(button: Button) {
         var textOperations = model.getTextOperations()
-        if (textOperations == CalculatorModel.OPERATIONS_DEFAULT_TEXT) {
+        if (textOperations == OPERATIONS_DEFAULT_TEXT) {
             textOperations = VALUE_EMPTY_TEXT
         }
         textOperations += button.text
@@ -35,8 +33,7 @@ class CalculatorPresenter(private val model: CalculatorModel, private val view: 
     }
 
     fun onEqualButtonPressed() {
-        var textResult =
-            getResults(getItems(model.getTextOperations()))
+        var textResult = model.getTextResult()
         model.setTextResult(textResult)
         view.setTextResult(textResult)
     }
