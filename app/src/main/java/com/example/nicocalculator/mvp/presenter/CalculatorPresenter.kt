@@ -4,7 +4,7 @@ import android.widget.Button
 import com.example.nicocalculator.mvp.model.CalculatorModel
 import com.example.nicocalculator.mvp.view.CalculatorView
 
-open class CalculatorPresenter(private val model: CalculatorModel, private val view: CalculatorView) {
+class CalculatorPresenter(private val model: CalculatorModel, private val view: CalculatorView) {
 
     companion object {
         private const val VALUE_EMPTY_TEXT = ""

@@ -1,6 +1,6 @@
 package com.example.nicocalculator.mvp.model
 
-open class CalculatorModel {
+class CalculatorModel {
 
     private var textResult = RESULTS_DEFAULT_TEXT
     private var textOperations = OPERATIONS_DEFAULT_TEXT
