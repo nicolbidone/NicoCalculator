@@ -1,4 +1,4 @@
-package com.example.nicocalculator.Utils
+package com.example.nicocalculator.utils
 
 data class KeyUtils(private var operation: String) {
 

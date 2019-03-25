@@ -1,4 +1,4 @@
-package com.example.nicocalculator.Utils
+package com.example.nicocalculator.utils
 
 const val DECIMAL_SEPARATOR = '.'
 const val VALUE_MIN_CAR = 48
@@ -14,3 +14,6 @@ const val OPEN_PAR = "("
 const val CLOSE_PAR = ")"
 const val OPERATIONS_DEFAULT_TEXT = "Operations"
 const val RESULTS_DEFAULT_TEXT = "Results"
+const val POS_0 = 0
+const val POS_1 = 1
+const val POS_2 = 2

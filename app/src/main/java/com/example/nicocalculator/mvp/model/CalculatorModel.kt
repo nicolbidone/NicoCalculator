@@ -1,6 +1,6 @@
 package com.example.nicocalculator.mvp.model
 
-import com.example.nicocalculator.Utils.*
+import com.example.nicocalculator.utils.*
 
 class CalculatorModel {
 
@@ -65,7 +65,7 @@ class CalculatorModel {
             }
             when {
                 valeAnt.size < VALUE_SIZE_OPERATION -> valeAnt.add(vale)
-                valeAnt[1].getPrecendence() > vale.getPrecendence() -> {
+                valeAnt[POS_1].getPrecendence() > vale.getPrecendence() -> {
                     valeAnt.add(vale)
                     val aux = threeItemsOperation(valeAnt)
                     valeAnt = mutableListOf()
@@ -85,7 +85,7 @@ class CalculatorModel {
             }
             i++
         }
-        textResults = if (valeAnt.size > 2) threeItemsOperation(valeAnt).toString() else valeAnt[0].toString()
+        textResults = if (valeAnt.size > POS_2) threeItemsOperation(valeAnt).toString() else valeAnt[POS_0].toString()
         return textResults
     }
 
@@ -93,11 +93,11 @@ class CalculatorModel {
         valeAnt: MutableList<KeyUtils>
     ): Int {
         var aux = VALUE_ZERO
-        when (valeAnt[1].getValue()) {
-            ADD_OPERATOR -> aux = valeAnt[0].getInt() + valeAnt[2].getInt()
-            DIVIDE_OPERATOR -> aux = valeAnt[0].getInt() / valeAnt[2].getInt()
-            MULTIPLY_OPERATOR -> aux = valeAnt[0].getInt() * valeAnt[2].getInt()
-            SUBTRACT_OPERATOR -> aux = valeAnt[0].getInt() - valeAnt[2].getInt()
+        when (valeAnt[POS_1].getValue()) {
+            ADD_OPERATOR -> aux = valeAnt[POS_0].getInt() + valeAnt[POS_2].getInt()
+            DIVIDE_OPERATOR -> aux = valeAnt[POS_0].getInt() / valeAnt[POS_2].getInt()
+            MULTIPLY_OPERATOR -> aux = valeAnt[POS_0].getInt() * valeAnt[POS_2].getInt()
+            SUBTRACT_OPERATOR -> aux = valeAnt[POS_0].getInt() - valeAnt[POS_2].getInt()
         }
         return aux
     }
