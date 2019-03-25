@@ -2,10 +2,10 @@ package com.example.nicocalculator.mvp.model
 
 import com.example.nicocalculator.Key
 
-class CalculatorModel {
+open class CalculatorModel {
 
     private var textResult = RESULTS_DEFAULT_TEXT
-    private var textOperations = OPERATIONS_DEFAULT_TEXT
+    private var textOperations = "8*9+6*3*3+5"
 
     companion object {
         internal const val OPERATIONS_DEFAULT_TEXT = "Operations"
@@ -52,23 +52,61 @@ fun getItems(items: CharSequence): List<Key> {
 
 fun getResults(itemList: List<Key>): String {
     var textResults = CalculatorModel.VALUE_EMPTY_TEXT
-    var valeAnt = mutableListOf<Key>()
-
-    for (vale in itemList) {
-        textResults += "$vale "
-        if (valeAnt.size < 2) valeAnt.add(Key(vale.getValue()))
-        else {
-            var aux = CalculatorModel.VALUE_ZERO
-            when (valeAnt[1].getValue()) {
-                CalculatorModel.ADD_OPERATOR -> aux = valeAnt[0].getInt() + vale.getInt()
-                CalculatorModel.DIVIDE_OPERATOR -> aux = valeAnt[0].getInt() / vale.getInt()
-                CalculatorModel.MULTIPLY_OPERATOR -> aux = valeAnt[0].getInt() * vale.getInt()
-                CalculatorModel.SUBTRACT_OPERATOR -> aux = valeAnt[0].getInt() - vale.getInt()
-            }
-            textResults += " = $aux\n$aux "
-            valeAnt = mutableListOf()
-            valeAnt.add(Key(aux.toString()))
-        }
-    }
+    textResults += doIt(itemList)
     return textResults
 }
+
+fun doIt(itemList: List<Key>): String {
+    var textResults: String
+    var valeAnt = mutableListOf<Key>()
+    var valeIn = mutableListOf<Key>()
+    var i = 0
+    while (i < itemList.lastIndex) {
+        val vale = itemList[i]
+        if (vale.getValue() == "("){
+            while (vale.getValue() != ")") {
+                valeIn.add(vale)
+                i++
+            }
+            valeAnt.add(Key(doIt(valeIn)))
+        }
+        when {
+            valeAnt.size < 3 -> valeAnt.add(vale)
+            valeAnt[1].getPrecendence() > vale.getPrecendence() -> {
+                valeAnt.add(vale)
+                val aux = threeItemsOperation(valeAnt)
+                valeAnt = mutableListOf()
+                valeAnt.add(Key(aux.toString()))
+                valeAnt.add(vale)
+            }
+            else -> {
+                var valeAux = mutableListOf<Key>()
+                valeAux.add(valeAnt[valeAnt.lastIndex])
+                valeAux.add(vale)
+                i++
+                valeAux.add(itemList[i])
+                val aux = threeItemsOperation(valeAux)
+                valeAnt.removeAt(valeAnt.lastIndex)
+                valeAnt.add(Key(aux.toString()))
+            }
+        }
+        i++
+    }
+    textResults = if (valeAnt.size > 2) threeItemsOperation(valeAnt).toString() else valeAnt[0].toString()
+    return textResults
+}
+
+private fun threeItemsOperation(
+    valeAnt: MutableList<Key>
+): Int {
+    var aux = CalculatorModel.VALUE_ZERO
+    when (valeAnt[1].getValue()) {
+        CalculatorModel.ADD_OPERATOR -> aux = valeAnt[0].getInt() + valeAnt[2].getInt()
+        CalculatorModel.DIVIDE_OPERATOR -> aux = valeAnt[0].getInt() / valeAnt[2].getInt()
+        CalculatorModel.MULTIPLY_OPERATOR -> aux = valeAnt[0].getInt() * valeAnt[2].getInt()
+        CalculatorModel.SUBTRACT_OPERATOR -> aux = valeAnt[0].getInt() - valeAnt[2].getInt()
+    }
+    return aux
+}
+
+

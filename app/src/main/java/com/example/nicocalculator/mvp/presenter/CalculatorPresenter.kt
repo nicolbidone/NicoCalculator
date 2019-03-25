@@ -6,7 +6,7 @@ import com.example.nicocalculator.mvp.model.getItems
 import com.example.nicocalculator.mvp.model.getResults
 import com.example.nicocalculator.mvp.view.CalculatorView
 
-class CalculatorPresenter(private val model: CalculatorModel, private val view: CalculatorView) {
+open class CalculatorPresenter(private val model: CalculatorModel, private val view: CalculatorView) {
 
     companion object {
         private const val VALUE_EMPTY_TEXT = ""
